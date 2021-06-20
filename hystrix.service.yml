@@ -1,0 +1,19 @@
+hystrix:
+  dashboard:
+    proxy-stream-allow-list: '*'
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+
+InstanceDiscovery:
+  impl: io.spring.platform.netflix.turbine.EurekaInstanceDiscovery
+
+turbine:
+  appConfig: account-service, excel-service, ship-service
+  clusterNameExpression:  new String("default")
+  combine-host-port: true
+  instanceUrlSuffix.default: /hystrix.stream
+  InstanceMonitor.eventStream.skipLineLogic.enabled: false
